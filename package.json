@@ -1,0 +1,29 @@
+{
+  "name": "fitrep-fitness",
+  "version": "1.0.0",
+  "description": "Application designed to help users track their workouts, with a simple UI.",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rcowles3/FitRep-Fitness.git"
+  },
+  "author": "Ryan Cowles, William Charles, Michelle Ryan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rcowles3/FitRep-Fitness/issues"
+  },
+  "homepage": "https://github.com/rcowles3/FitRep-Fitness#readme",
+  "dependencies": {
+    "dotenv": "^4.0.0",
+    "express": "^4.15.3",
+    "mysql2": "^1.4.0",
+    "sequelize": "^4.4.2",
+    "sequelize-cli": "^2.8.0"
+  }
+}
