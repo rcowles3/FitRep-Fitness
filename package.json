@@ -20,7 +20,9 @@
   },
   "homepage": "https://github.com/rcowles3/FitRep-Fitness#readme",
   "dependencies": {
+    "@datafire/google_fitness": "^2.0.2",
     "body-parser": "^1.17.2",
+    "datafire": "^2.10.1",
     "dotenv": "^4.0.0",
     "express": "^4.15.3",
     "express-handlebars": "^3.0.0",

@@ -22,3 +22,5 @@ db.sequelize.sync().then(function() {
         console.log("Listening on Port: ", PORT);
     });
 });
+
+console.log(db.newUser);
