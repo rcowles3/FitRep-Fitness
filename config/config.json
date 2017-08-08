@@ -1,7 +1,7 @@
 {
     "development": {
         "username": "root",
-        "password": "Fdd4e!i$f$",
+        "password": null,
         "database": "FITREP_DB",
         "host": "127.0.0.1",
         "dialect": "mysql"
