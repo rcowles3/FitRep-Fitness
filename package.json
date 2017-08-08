@@ -26,6 +26,7 @@
     "dotenv": "^4.0.0",
     "express": "^4.15.3",
     "express-handlebars": "^3.0.0",
+    "mysql": "^2.14.1",
     "mysql2": "^1.4.0",
     "sequelize": "^4.4.2",
     "sequelize-cli": "^2.8.0"

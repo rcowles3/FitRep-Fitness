@@ -2,7 +2,11 @@ const sequelize = require('sequelize');
 
 // creating our sequelize model for our burger queries
 module.exports = function(sequelize, DataTypes) {
-    var newUser = sequelize.define('newUser', {
+    var user = sequelize.define('user', {
+        id: {
+            type: DataTypes.INTEGER,
+            primaryKey: true
+        },
         first_name: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -25,8 +29,6 @@ module.exports = function(sequelize, DataTypes) {
         weight: DataTypes.INTEGER,
         age: DataTypes.INTEGER,
         email: DataTypes.STRING
-    }, {
-        timestamps: false
     });
-    return newUser;
+    return user;
 }
