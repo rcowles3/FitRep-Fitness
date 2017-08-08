@@ -5,10 +5,12 @@
 // *** Dependencies
 // =============================================================
 var express = require("express");
+var db = require("./models");
+var mysql = require('mysql');
+var expbhs = require ('express-handlebars');
 var bodyParser = require("body-parser");
 var methodOverride = require("method-override");
 
-//var connection = require("./config/connection");
 
 // Sets up the Express App
 // =============================================================
