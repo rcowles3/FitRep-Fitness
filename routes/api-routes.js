@@ -19,26 +19,15 @@ module.exports = function(app) {
                 var hbsObj = { user: userData };
                 // console.log(allBurgers);
                 res.render("index", hbsObj);
-            });
-        })
+            })
+        });
+    });
+    app.get("/workouts", function(req, res) {
+        db.workoutData.findAll({}).then(function(data) {
+        	var hbsObject = {workoutData: data};
+            res.render("index", hbsObject);
+            //console.log(hbsObject);
 
-        // app.post("/", function(req, res) {
-        //     db.burger.create(req.body).then(function(allBurgers) {
-        //         res.redirect("/");
-        //     })
-        // })
-
-        // app.put("/:id", function(req, res) {
-        //     var eatenBurger = {
-        //         DEVOURED: 1
-        //     }
-
-        //     db.burger.update(eatenBurger, {
-        //         where: {
-        //             id: req.params.id
-        //         }
-        //     }).then(function(allBurgers) {
-        //         res.redirect("/");
-        //     })
-    })
-}
+        });
+    });
+};
