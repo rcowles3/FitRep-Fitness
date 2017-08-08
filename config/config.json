@@ -1,9 +1,16 @@
 {
     "development": {
+<<<<<<< HEAD
         "username": "root",
         "password": "Fdd4e!i$f$",
         "database": "FITREP_DB",
         "host": "localhost",
+=======
+        "username": "mrryan1",
+        "password": null,
+        "database": "database_development",
+        "host": "127.0.0.1",
+>>>>>>> master
         "dialect": "mysql"
     },
     "test": {
@@ -14,7 +21,7 @@
         "dialect": "mysql"
     },
     "production": {
-        "username": "root",
+        "username": "mrryan1",
         "password": null,
         "database": "database_production",
         "host": "127.0.0.1",
