@@ -7,7 +7,6 @@
 var express = require("express");
 var db = require("./models");
 var mysql = require("mysql");
-var expbhs = require("express-handlebars");
 var path = require("path");
 var bodyParser = require("body-parser");
 var methodOverride = require("method-override");
@@ -17,12 +16,10 @@ var methodOverride = require("method-override");
 // Sets up the Express App
 // =============================================================
 var app = express();
-
 var PORT = process.env.PORT || 3000;
 
-app.use("public", path.static(__dirname, "/public"));
-
-
+// sets our index page
+// app.use("public", path.static(__dirname, "/public"));
 
 // Sets up the Express app to handle data parsing
 app.use(bodyParser.json());
@@ -35,8 +32,10 @@ app.use(express.static("public"));
 
 app.use(methodOverride("_method"));
 
+// Set Handlebars.
 var exphbs = require("express-handlebars");
-app.engine("handlebars", exphbs({defaultLayout:"main"}));
+
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // Requiring our models for syncing
@@ -44,9 +43,7 @@ var db = require("./models");
 
 // Routes
 // =============================================================
-require("./routes/post-api-routes.js")(app);
-
-
+require("./routes/api-routes.js")(app);
 
 /// Syncing our sequelize models and then starting our Express app
 // =============================================================
