@@ -1,16 +1,26 @@
 <div class="container">
     <div class="row">
         <div class="col-md-4"></div>
-		<div class="col-md-4">
-			<h1>Exercises List</h1>
-             <li>
+        <div class="col-md-4">
+            <h1>Exercises List</h1>
+            <li>
                 {{#each exercises}}
-                    <div>{{this.workout_type}}, {{this.exercise}}</div>
+                <form action="/{{this.workout_type}}?_method=GET" method="POST">
+                    <input type="hidden" name="excercises" value="true">
+                    <button type="submit">{{this.workout_type}}</button>
+                </form>
                 {{/each}}
-            </li> 
-		</div>
-		<div class="col-md-4">
-            
+            </li>
+        </div>
+        <div class="col-md-4">
         </div>
     </div>
 </div>
+
+{{!-- <form class="create-update-form" action="/" method="POST">
+    <div class="form-group">
+        <label for="newBurger">Name of Burger:</label>
+        <input type="text" id="newBurger" name="name">
+    </div>
+    <button type="submit">Make Burger</button>
+</form> --}}
