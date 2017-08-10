@@ -17,15 +17,14 @@ module.exports = function(app) {
                 id: req.params.id
             }.then(function(userData) {
                 var hbsObj = { user: userData };
-                // console.log(allBurgers);
                 res.render("index", hbsObj);
             })
         });
     });
     app.get("/workouts", function(req, res) {
-        db.workoutData.findAll({}).then(function(data) {
-        	var hbsObject = {workoutData: data};
-            res.render("index", hbsObject);
+        db.exercises.findAll({}).then(function(data) {
+            var hbsObject = { exercises: data };
+            res.render("workouts", hbsObject);
             //console.log(hbsObject);
 
         });
