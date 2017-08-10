@@ -7,58 +7,58 @@ module.exports = function(sequelize, DataTypes) {
     // storing our user as a variable with validation
     var user = sequelize.define('user', {
         // id: {
-        //     primaryKey: true,
         //     type: DataTypes.UUID,
-        //     defaultValue: DataTypes.UUIDV1
+        //     defaultValue: DataTypes.UUIDV1,
+        //     primaryKey: true
         // },
         first_name: {
             type: DataTypes.STRING,
-            allowNull: false,
+            // allowNull: false,
             validate: {
                 len: [1, 15]
             }
         },
         last_name: {
             type: DataTypes.STRING,
-            allowNull: false,
+            // allowNull: false,
             validate: {
                 len: [1, 15]
             }
         },
         heightFt: {
-            type: DataTypes.INTEGER,
-            allowNull: false
+            type: DataTypes.INTEGER
+                // allowNull: false
         },
         heightIn: {
-            type: DataTypes.INTEGER,
-            allowNull: false
+            type: DataTypes.INTEGER
+                // allowNull: false
         },
         weight: {
-            type: DataTypes.INTEGER,
-            allowNull: false
+            type: DataTypes.INTEGER
+                // allowNull: false
         },
         age: {
-            type: DataTypes.INTEGER,
-            allowNull: false
+            type: DataTypes.INTEGER
+                // allowNull: false
         },
         email: {
             type: DataTypes.STRING,
             isUnique: true,
-            allowNull: false,
+            // allowNull: false,
             validate: {
                 isEmail: true
             }
         },
         username: {
             type: DataTypes.STRING,
-            allowNull: false,
+            // allowNull: false,
             validate: {
                 len: [1, 15]
             }
         },
-        password: {
+        pass: {
             type: DataTypes.STRING,
-            allowNull: false,
+            // allowNull: false,
             validate: {
                 len: [1, 15]
             }

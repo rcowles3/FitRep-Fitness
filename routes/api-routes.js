@@ -11,16 +11,18 @@ var db = require("../models");
 // Routes
 // =============================================================
 module.exports = function(app) {
-    app.get("/username", function(req, res) {
-        db.user.findOne({
-            where: {
-                id: req.params.id
-            }.then(function(userData) {
-                var hbsObj = { user: userData };
-                res.render("index", hbsObj);
-            })
-        });
+
+    app.post("/create-account", function(req, res) {
+        console.log('======================= REQUEST ================\n\n', req.body);
+        db.user.create(req.body).then(function(data) {
+            res.redirect("/workouts");
+        })
+    })
+
+    app.get("/create-account", function(req, res) {
+        res.render("create-account");
     });
+
     app.get("/workouts", function(req, res) {
         db.exercises.findAll({
             attributes: ['workout_type'],
