@@ -1,13 +1,11 @@
 module.exports = function(sequelize, DataTypes) {
-  var workout = sequelize.define("workout", {
-    //Workout Name
-    workout_name: DataTypes.STRING,
-    workout_type: DataTypes.STRING,
-    exercise: DataTypes.STRING
-    //weight: DataTypes.
-
+  var workoutData = sequelize.define("workoutData", {
+    exercise: DataTypes.STRING,
+    weight: DataTypes.INTEGER,
+    reps: DataTypes.INTEGER,
+    set: DataTypes.INTEGER
   });
 
   
-  return workout;
+  return workoutData;
 };

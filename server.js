@@ -6,8 +6,9 @@
 // =============================================================
 var express = require("express");
 var db = require("./models");
-var mysql = require('mysql');
-var expbhs = require ('express-handlebars');
+var mysql = require("mysql");
+var expbhs = require("express-handlebars");
+var path = require("path");
 var bodyParser = require("body-parser");
 var methodOverride = require("method-override");
 
@@ -17,6 +18,9 @@ var methodOverride = require("method-override");
 var app = express();
 
 var PORT = process.env.PORT || 3000;
+
+app.use("public", path.static(__dirname, "/public"));
+
 
 
 // Sets up the Express app to handle data parsing
@@ -45,8 +49,8 @@ require("./routes/post-api-routes.js")(app);
 
 /// Syncing our sequelize models and then starting our Express app
 // =============================================================
-db.sequelize.sync({ force: true }).then(function() {
-  app.listen(PORT, function() {
-    console.log("App listening on PORT " + PORT);
-  });
+db.sequelize.sync({ force: false }).then(function() {
+    app.listen(PORT, function() {
+        console.log("Listening on Port: ", PORT);
+    });
 });
