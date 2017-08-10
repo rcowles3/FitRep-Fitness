@@ -7,21 +7,25 @@
 	<<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-	<div class="container">
-	    <div class="jumbotron">
-	        <h1>Fit Rep</h1>
-	        <p> Welcome to Fit Rep! Make an Account! Build your Workout! And get to Reppin!</p>
-	        <p><a id="sign" class="btn btn-primary btn-lg" href="#" role="button">Sign In</a> or <a id="create" class="btn btn-primary btn-lg" href="#" role="button">Create Accout</a></p>
-	    </div>
-	</div>
+	<div class = "container">
+	<div class="jumbotron">
+          <h1>Customize Your Workout!</h1>
+              <p>Pick an exercise based off categories and start getting your reps in! </p>
+   </div>
+   <div class="row">
+   	{{#each workoutType}}
+        <div class="col-sm-6 col-md-2">
+            <div class="thumbnail">
+	            <div class="list-group">
+	            {{#each workout}}
+				  <a href="#" class="list-group-item active">
+				    {{this}} 
+				  </a>
+				  {{/each}}
+				</div>
+            </div>
+        </div>
+        {{/each}}
+</div>
 </body>
-<script>
-$("#sign").on("click", "#btn-lg", function(){
-	console.log("button was clicked")
-});
-
-$("#create").on("click", "#btn-lg", function(){
-	console.log("button was clicked")
-});
-</script>
 </html>

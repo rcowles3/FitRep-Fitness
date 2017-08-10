@@ -7,10 +7,14 @@ var db = require("../models");
 
 module.exports = function(app) {
     // Create all our routes and set up logic within those routes where required.
-    router.get("/", function(req, res) {
-        db.newUser.findAll({}).then(function(data) {
-            res.render("index", { newUser: data });
+    app.get("/", function(req, res) {
 
-        });
+      res.render("build", { 
+      	workoutType: [
+      		{workout:['a','c','d']},
+      		{workout:['a','c','d']} 
+      		 
+      		  ] 
+      		});
     });
 }
