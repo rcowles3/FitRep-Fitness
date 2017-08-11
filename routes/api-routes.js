@@ -11,14 +11,21 @@ var db = require("../models");
 // Routes
 // =============================================================
 module.exports = function(app) {
-    app.get("/username", function(req, res) {
-        db.user.findOne({
-            where: {
-                id: req.params.id
-            }.then(function(userData) {
-                var hbsObj = { user: userData };
-                res.render("index", hbsObj);
-            })
+    // app.get("/username", function(req, res) {
+    //     db.user.findOne({
+    //         where: {
+    //             id: req.params.id
+    //         }.then(function(userData) {
+    //             var hbsObj = { user: userData };
+    //             res.render("user", hbsObj);
+    //         })
+    //     });
+    // });
+    app.get("/", function(req, res) {
+        db.user.findAll({}).then(function(data) {
+
+            res.render("index", { user: data });
+
         });
     });
     app.get("/workouts", function(req, res) {
