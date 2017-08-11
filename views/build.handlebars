@@ -9,16 +9,31 @@
             <div class="thumbnail">
 	            <div class="list-group">
 	            	
-				  <a href="#" id="chest" class="list-group-item active">
+				  <a href="#" id="workoutType" class="list-group-item active">
 				    {{this}} 
 				  </a>
 				  
 				  {{#each workout}}
-				  <a href="#" class="list-group-item">{{this}}</a>
+				  <button><a href="#" id="workouts" class="list-group-item">{{this}}</a></button>
 				  {{/each}}
+				  
 				  
 				</div>
             </div>
         </div>
         {{/each}}
-</div>
+	</div>
+	<div class="customize">
+		<h1>Your Workout</h1>
+			<ol>
+			</ol>
+		</div>
+
+<script>
+
+$('button').click(function() {
+	var workout = $('button');
+	$('ol').append('<li>'+workout+'</li>');
+	});
+
+</script>

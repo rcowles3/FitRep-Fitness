@@ -12,6 +12,10 @@ module.exports = function(app) {
       res.render("build", { 
       	workoutType: [
       		{workout:['a','c','d']},
+      		{workout:['a','c','d']},
+      		{workout:['a','c','d']},
+      		{workout:['a','c','d']},
+      		{workout:['a','c','d']},
       		{workout:['a','c','d']} 
       		 
       		  ] 
