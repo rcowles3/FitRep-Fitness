@@ -9,6 +9,8 @@ module.exports = function(sequelize, DataTypes) {
         weight: DataTypes.INTEGER,
         reps: DataTypes.INTEGER,
         set: DataTypes.INTEGER
+    }, {
+        timestamps: false
     });
 
     // Joining of our tables 
@@ -22,9 +24,7 @@ module.exports = function(sequelize, DataTypes) {
             }
         });
         // workoutData can contain multiple exercises
-        // workoutData.hasMany(models.exercises, {
-        //     foreignKey: 'exercise'
-        // });
+        // workoutData.hasMany(models.exercises);
     };
     return workoutData;
 };
