@@ -14,7 +14,7 @@
 				  </a>
 				  
 				  {{#each workout}}
-				  <button><a href="#" id="workouts" class="list-group-item">{{this}}</a></button>
+				  <button><a href="#" value = {{this}} id={{this}} class="list-group-item">{{this}}</a></button>
 				  {{/each}}
 				  
 				  
@@ -25,15 +25,16 @@
 	</div>
 	<div class="customize">
 		<h1>Your Workout</h1>
-			<ol>
-			</ol>
-		</div>
+		<ol>
+
+		</ol>
+	</div>
 
 <script>
 
 $('button').click(function() {
-	var workout = $('button');
-	$('ol').append('<li>'+workout+'</li>');
+	var workout = $('button').val();
+	$("ol").append(workout);
 	});
 
 </script>
