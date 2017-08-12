@@ -1,0 +1,42 @@
+<div class="row">
+   {{#each exercises}}
+        <div class="col-sm-6 col-md-2">
+            <div class="thumbnail">
+                <div class="list-group">
+                    <form  class="list-group-item active" action="/{{this.workout_type}}?_method=GET" method="POST">
+                    <input type="hidden" name="excercises" value="true">
+                    <button type="submit">{{this.workout_type}}</button>
+                </form>
+
+                </div>
+            </div>
+        </div>
+    {{/each}}
+</div>
+<div>
+    {{#each exercises}}
+        <form action="/{{this.exercise}}" method="POST">
+            <input type="hidden" name="excercises" value="true">
+            <button id="workouts" type="submit">{{this.exercise}}</button>
+        </form>
+    {{/each}}
+</div>
+
+{{!-- <div class="customize">
+    <h1>Your Workout</h1>
+        <ol>
+            {{#each workoutData}}
+               {{this.exercise}} 
+            {{/each}}
+        </ol>
+        </div>
+ <script>
+
+//$('#workouts').click(function() {
+    //var workout = $(this.exercise).val();
+    $('ol').append('<li>'+{{this.exercise}}+'</li>');
+    });
+
+</script> --}}
+
+

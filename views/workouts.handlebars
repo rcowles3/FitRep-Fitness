@@ -2,25 +2,56 @@
     <div class="row">
         <div class="col-md-4"></div>
         <div class="col-md-4">
-            <h1>Exercises List</h1>
-            <li>
-                {{#each exercises}}
+            {{!-- <h1>Exercises List</h1>           
+            {{#each exercises}}
                 <form action="/{{this.workout_type}}?_method=GET" method="POST">
                     <input type="hidden" name="excercises" value="true">
                     <button type="submit">{{this.workout_type}}</button>
                 </form>
-                {{/each}}
-            </li>
+            {{/each}}
         </div>
         <div class="col-md-4">
+            {{#each exercises}}
+                <form action="/{{this.exercise}}" method="POST">
+                    <input type="hidden" name="excercises" value="true">
+                    <button type="submit">{{this.exercise}}</button>
+                </form>
+            {{/each}}
         </div>
-    </div>
+    </div> --}}
+
+    
+        <h1>My Workout Table</h1>
+        {{#each workoutData}}
+           <div> {{this.exercise}}</div>>
+        {{/each}}
+</div>
 </div>
 
-{{!-- <form class="create-update-form" action="/" method="POST">
-    <div class="form-group">
-        <label for="newBurger">Name of Burger:</label>
-        <input type="text" id="newBurger" name="name">
+</div>
+{{!-- <div class="row">
+   {{#each workoutType}}
+        <div class="col-sm-6 col-md-2">
+            <div class="thumbnail">
+                <div class="list-group">
+                    
+                  <a href="#" id="workoutType" class="list-group-item active">
+                    {{this}} 
+                  </a>
+                  
+                  {{#each workout}}
+                  <button><a href="#" id="workouts" class="list-group-item">{{this}}</a></button>
+                  {{/each}}
+                  
+                  
+                </div>
+            </div>
+        </div>
+        {{/each}}
     </div>
-    <button type="submit">Make Burger</button>
-</form> --}}
+    <div class="customize">
+        <h1>Your Workout</h1>
+            <ol>
+            </ol>
+        </div> --}}
+

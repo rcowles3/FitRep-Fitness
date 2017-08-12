@@ -1,8 +1,8 @@
 {
     "development": {
-        "username": "mryan1",
+        "username": "mrryan1",
         "password": null,
-        "database": "FITREP_DB",
+        "database": "fitrep_db",
         "host": "127.0.0.1",
         "dialect": "mysql"
     },
