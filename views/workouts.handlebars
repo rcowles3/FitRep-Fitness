@@ -2,25 +2,38 @@
     <div class="row">
         <div class="col-md-4"></div>
         <div class="col-md-4">
-            <h1>Exercises List</h1>
-            <li>
-                {{#each exercises}}
+            <h1>Exercises List</h1>           
+            {{#each exercises}}
                 <form action="/{{this.workout_type}}?_method=GET" method="POST">
                     <input type="hidden" name="excercises" value="true">
                     <button type="submit">{{this.workout_type}}</button>
                 </form>
-                {{/each}}
-            </li>
+            {{/each}}
         </div>
         <div class="col-md-4">
+            {{#each exercises}}
+                <form action="/{{this.exercise}}" method="POST">
+                    <input type="hidden" name="excercises" value="true">
+                    <button type="submit" id="workouts" value={{this.exercise}}>{{this.exercise}}</button>
+                </form>
+            {{/each}}
         </div>
     </div>
-</div>
 
-{{!-- <form class="create-update-form" action="/" method="POST">
-    <div class="form-group">
-        <label for="newBurger">Name of Burger:</label>
-        <input type="text" id="newBurger" name="name">
-    </div>
-    <button type="submit">Make Burger</button>
-</form> --}}
+<div class="customize">
+    <h1>Your Workout</h1>
+        <ol>
+            {{!-- {{#each workoutData}}
+               {{this.exercise}} 
+            {{/each}} --}}
+        </ol>
+        </div>
+ <script>
+
+$('button').click(function() {
+    var workout = $('button').val();
+    $('ol').append('<li>'+workout+'</li>');
+    });
+
+</script>
+
