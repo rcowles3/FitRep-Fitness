@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="text-center row">
+        <div class="text-center">
+            <a href="/">
+            <img id="logo" src="/assets/img/fitRepLogo.png"></img>
+        </a>
+        </div>
+        <h2>{{exercises.dataValues.exercise}}</h2>
+        <form class="create-update-form" action="/exercise-data" method="POST">
+            <div class="form-group">
+                <label for="weight">Weight:</label>
+                <input class="form-control text-center" type="text" id="weight" name="weight">
+            </div>
+            <div class="form-group">
+                <label for="set">Set:</label>
+                <input class="form-control text-center" type="text" id="set" name="set">
+            </div>
+            <div class="form-group">
+                <label for="reps">Rep:</label>
+                <input class="form-control text-center" type="text" id="reps" name="reps">
+            </div>
+            <button class="form-control btn btn-primary" type="submit">Submit</button>
+        </form>
+    </div>
+</div>

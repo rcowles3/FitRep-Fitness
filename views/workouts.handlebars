@@ -1,8 +1,4 @@
-<div class="title">
-    {{hbsObject}}
-    <h1>Welcome {{hbsObject.user.first_name}}</h1>
-</div>
-<div class="container">
+{{!-- <div class="container">
     <div class="row">
         <div class="col-md-4"></div>
         <div class="col-md-4">
@@ -20,8 +16,63 @@
                 <input type="hidden" name="excercises" value="true">
                 <button type="submit" id="workouts" value={{this.exercise}}>{{this.exercise}}</button>
             </form>
+             --}}
+    <div class="text-center">
+        <a href="/">
+            <img id="logo" src="/assets/img/fitRepLogo.png"></img>
+        </a>
+    </div>
+    <div class="container">
+        <h1> Welcome to Fit Rep!</h1>
+        <h2>Customize your profile, build your workouts, and get to Reppin!</h1>
+            {{!--
+            <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn More</a></p> --}}
+<br>
+            <div class="row">
+                <div class="col-sm-6 col-md-4">
+                    <div class="thumbnail">
+                        <h3>Find a Trainer</h3>
+                        <img src="..." alt="...">
+                        <div class="caption">
+                            <p>Find a trainer to help personolize your workouts based off your personal goals</p>
+                            <p><a href="#" class="btn btn-primary" role="button">Button</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <div class="thumbnail">
+                        <h3>Build your Profile</h3>
+                        <img src="..." alt="...">
+                        <div class="caption">
+                            <p>Personalize your Profile and chat with the Community</p>
+                            <p><a href="#" class="btn btn-primary" role="button">Button</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <div class="thumbnail">
+                        <h3>Get Fit</h3>
+                        <img src="..." alt="...">
+                        <div class="caption">
+                            <p>Customize your workouts and share with the community!</p>
+                            <p><a href="#" class="btn btn-primary" role="button">Button</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                
+                <div class="col-sm-12 col-md-12">
+                    <h3>Select The Type Of Workout That You Would Like To Track</h3>
+                    <br> {{#each exercises}}
+                    <form class="create-update-form" action="/{{this.workout_type}}" method="POST">
+                    <button class="form-control form-group btn btn-primary" id="{{this.workout_type}}">
+                        {{this.workout_type}}
+                    </form>
             {{/each}}
         </div>
+        
+    </div>
     </div>
 </div>
 {{!-- {{exercises}} --}} {{!--
@@ -62,3 +113,18 @@
     });
 
 </script> --}}
+{{!-- {{exercises}} --}} 
+{{!-- {{#each exercises}}
+<div>{{this.workout_type}}</div>
+<form class="create-update-form" action="/{{this.workout_type}}" method="POST">
+    <div class="form-group">
+        <label for="weight">Weight:</label>
+        <input type="text" id="weight" name="weight">
+        <label for="set">Set:</label>
+        <input type="text" id="set" name="set">
+        <label for="rep">Rep:</label>
+        <input type="text" id="rep" name="rep">
+    </div>
+    <button type="submit">Submit</button>
+                    </form>
+                    {{/each}} --}}

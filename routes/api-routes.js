@@ -20,7 +20,7 @@ module.exports = function(app) {
         res.render("create-account");
     });
 
-    app.post("/create-account", function(req, res, next) {
+    app.post("/create-account", function(req, res) {
 
         // res.redirect("/login");
         // console.log('======================= REQUEST ================\n\n', req.body);
@@ -63,21 +63,11 @@ module.exports = function(app) {
                 res.redirect('/create-account');
             } else {
                 var hbsObject = { user: loginData };
-                console.log('===================DATA +================\n\n\n', hbsObject);
-                res.render("workouts", hbsObject);
+                // console.log('===================DATA +================\n\n\n', hbsObject);
+                res.redirect("workouts");
             }
         });
     });
-
-    // app.get("/login/:username", function(req, res) {
-    //     db.user.findOne({
-    //         where: {
-    //             username: req.params.username
-    //         }
-    //     }).then(function(loginData) {
-    //         res.render("workouts", { user: first_name });
-    //     });
-    // });
 
     app.get("/workouts", function(req, res) {
         db.exercises.findAll({
@@ -90,64 +80,70 @@ module.exports = function(app) {
             //console.log(hbsObject);
         });
     });
-    app.get("/:workout_type", function(req, res) {
-        console.log(req.params.workout_type);
+    app.post("/:workout_type", function(req, res) {
+        // console.log(req.params.workout_type);
         db.exercises.findAll({
             where: {
                 workout_type: req.params.workout_type
             }
         }).then(function(data) {
             var hbsObject = { exercises: data };
-            // console.log('======== DATA=======', data);
+            // console.log('======== WORKOUT TYPE DATA=======\n', hbsObject);
             res.render("exercises", hbsObject);
         })
-    })
+    });
 
-    app.post("/:workout_type", function(req, res) {
-            // console.log(req.params.workout_type);
-            db.workoutData.create(req.body).then(function(data) {
-                // var hbsObject = { exercises: data };
-                console.log('======== WORKOUT DATA==========\n\n', hbsObject);
-                res.render("exercises", hbsObject);
-            })
-        })
-        //console.log('======== DATA=======', data);
-        // res.render("build", hbsObject);
-        // });
-        // });
-        // app.post("/:exercise", function(req, res) {
-        //     // console.log(req.params.exercise);
-        //     var newWorkout = {
-        //             exercise: req.params.exercise
+    // app.post("/:workout_type", function(req, res) {
+    //     console.log(req.body);
+    //     db.workoutData.create(req.body).then(function(newWorkout) {
+    //         res.redirect("user");
+    //     })
+    // })
 
-    //         }
-    //console.log(newWorkout);
-    // db.workoutData.create(newWorkout).then(function(data) {
-    // console.log(data);
-    // res.end();
-    //res.render("workouts", { workoutData: data });
-
-    // app.get("/build", function(res, req) {
-    //     db.workoutData.findAll({}).then(function(data) {
-    //         res.render("build", { workoutData: data });
-    //     });
-    // });
-    // });
-    // db.workoutData.create(newWorkout).then(function(data) {
-    //     res.redirect("workouts");
-    // });
-
-    // });
     // app.get("/:exercise", function(req, res) {
-    //     // console.log(req.params.workout_type);
-    //     db.workoutData.findOne({
+    //     db.exercises.findAll({
+    //         attributes: ['exercise'],
+    //         group: ['exercise'],
     //         where: {
-    //             workout_type: req.params.exercise
+    //             exercise: req.params.exercise
     //         }
-    //     }).then(function(data) {
-    //         var hbsObject = { workoutData: data };
-    //         console.log('======== DATA=======', data);
-    //         res.render("build", hbsObject);
-    //     });
+    //     }).then(function(exerciseData) {
+    //         var hbsObject = { exercises: exerciseData };
+    //         console.log('======== EXERCISE DATA=======\n', hbsObject);
+    //         res.render("exercise-data", hbsObject);
+    //     })
     // });
-};
+
+    app.get("/:exercise", function(req, res) {
+        // console.log(req.params.body);
+        db.exercises.findOne({
+                where: {
+                    exercise: req.params.exercise
+                }
+            }).then(function(data) {
+                var hbsObject = { exercises: data };
+                // console.log('======== EXCERCISE DATA=======\n', hbsObject, data);
+                res.render("exercise-data", hbsObject);
+            })
+            // res.render("exercise-data");
+    });
+    app.post("/:exercise", function(req, res) {
+        // res.render("exercise-data");
+        db.workoutData.create(req.body).then(function(req, res) {
+            console.log(req.body);
+            res.redirect("workouts");
+
+        });
+    });
+
+    // app.post("/:workout_type", function(req, res) {
+    //     console.log(req);
+    //     db.workoutData.create(req.body).then(function(data) {
+    //         var hbsObject = { exercises: data };
+    //         console.log('======== WORKOUT DATA==========\n\n', hbsObject);
+    //         res.render("exercises", hbsObject);
+    //         res.render("workouts");
+    //     })
+    // });
+
+}

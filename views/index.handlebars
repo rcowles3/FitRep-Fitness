@@ -3,16 +3,15 @@
         <img src="/assets/img/fitRepLogo.png"></img>
     </div>
     <div>
+        <div class="col-md-3"></div>
         <div class="col-md-6">
             <form class="text-center" action="/login" method="GET">
                 <input type="hidden" name="login" value="true">
-                <button type="submit">Login</button>
+                <button class="btn btn-primary" type="submit">Login</button>
             </form>
-        </div>
-        <div class="col-md-6">
             <form class="text-center" action="/create-account" method="GET">
                 <input type="hidden" name="create-account" value="true">
-                <button type="submit">Create Account</button>
+                <button class="btn btn-primary" type="submit">Create Account</button>
             </form>
             {{!-- <div class="row">
                 <div class="col-md-4"></div>
@@ -29,5 +28,6 @@
                 </div>
             </div> --}}
         </div>
+        <div class="col-md-3"></div>
     </div>
 </div>

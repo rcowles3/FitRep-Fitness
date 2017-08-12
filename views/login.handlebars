@@ -1,9 +1,24 @@
- <form class="create-update-form" action="/login" method="POST">
-    <div class="form-group">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username">
-        <label for="pass">Password:</label>
-        <input type="text" id="pass" name="pass">
+<div class="container">
+    <div class="text-center">
+        <a href="/">
+            <img src="/assets/img/fitRepLogo.png"></img>
+        </a>
     </div>
-    <button type="submit">Login</button>
-</form> 
+    <div>
+        <div class="col-md-3"></div>
+        <div class="text-center col-md-6">
+            <form class="create-update-form" action="/login" method="POST">
+                <div class="text-center form-group">
+                    <label for="username">Username:</label>
+                    <input class="form-control" type="text" id="username" name="username">
+                </div>
+                <div class="text-center form-group">
+                    <label for="pass">Password:</label>
+                    <input class="form-control" type="text" id="pass" name="pass">
+                </div>
+                <button class="btn btn-primary" type="submit">Login</button>
+            </form>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>

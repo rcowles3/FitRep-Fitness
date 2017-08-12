@@ -1,6 +1,10 @@
-h1 {
-    color: red;
+.btn,
+.btn-primary {
+    width: 200px;
+    margin: 5px;
+    background-color: darkorange;
 }
 
-
-/* .customize  */
+#logo {
+    height: 400px;
+}
