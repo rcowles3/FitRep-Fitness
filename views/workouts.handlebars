@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-md-4"></div>
         <div class="col-md-4">
-            {{!-- <h1>Exercises List</h1>           
+            <h1>Exercises List</h1>           
             {{#each exercises}}
                 <form action="/{{this.workout_type}}?_method=GET" method="POST">
                     <input type="hidden" name="excercises" value="true">
@@ -14,44 +14,26 @@
             {{#each exercises}}
                 <form action="/{{this.exercise}}" method="POST">
                     <input type="hidden" name="excercises" value="true">
-                    <button type="submit">{{this.exercise}}</button>
+                    <button type="submit" id="workouts" value={{this.exercise}}>{{this.exercise}}</button>
                 </form>
             {{/each}}
         </div>
-    </div> --}}
-
-    
-        <h1>My Workout Table</h1>
-        {{#each workoutData}}
-           <div> {{this.exercise}}</div>>
-        {{/each}}
-</div>
-</div>
-
-</div>
-{{!-- <div class="row">
-   {{#each workoutType}}
-        <div class="col-sm-6 col-md-2">
-            <div class="thumbnail">
-                <div class="list-group">
-                    
-                  <a href="#" id="workoutType" class="list-group-item active">
-                    {{this}} 
-                  </a>
-                  
-                  {{#each workout}}
-                  <button><a href="#" id="workouts" class="list-group-item">{{this}}</a></button>
-                  {{/each}}
-                  
-                  
-                </div>
-            </div>
-        </div>
-        {{/each}}
     </div>
-    <div class="customize">
-        <h1>Your Workout</h1>
-            <ol>
-            </ol>
-        </div> --}}
+
+<div class="customize">
+    <h1>Your Workout</h1>
+        <ol>
+            {{!-- {{#each workoutData}}
+               {{this.exercise}} 
+            {{/each}} --}}
+        </ol>
+        </div>
+ <script>
+
+$('button').click(function() {
+    var workout = $('button').val();
+    $('ol').append('<li>'+workout+'</li>');
+    });
+
+</script>
 

@@ -30,11 +30,11 @@ module.exports = function(app) {
     });
 
 
-    app.get("/exercises", function(req, res) {
-        db.workoutData.findAll({}).then(function(data) {
-            res.render("exercises", { workoutData: data });
-        });
-    });
+    // app.get("/exercises", function(req, res) {
+    //     db.workoutData.findAll({}).then(function(data) {
+    //         res.render("exercises", { workoutData: data });
+    //     });
+    // });
 
     app.get("/build", function(req, res) {
         db.exercises.findAll({
@@ -54,19 +54,22 @@ module.exports = function(app) {
             }
         }).then(function(data) {
             var hbsObject = { exercises: data };
-            // console.log('======== DATA=======', data);
+            //console.log('======== DATA=======', data);
             res.render("build", hbsObject);
         });
     });
     app.post("/:exercise", function(req, res) {
-        console.log(req.params.exercise);
+        // console.log(req.params.exercise);
         var newWorkout = {
-            exercise: req.params.exercise
+                exercise: req.params.exercise
 
-        }
-        console.log(newWorkout);
-        db.workoutData.create(newWorkout).then(function() {
-            res.redirect("/build");
+            }
+            //console.log(newWorkout);
+        db.workoutData.create(newWorkout).then(function(data) {
+            // console.log(data);
+            res.end();
+            //res.render("workouts", { workoutData: data });
+
             // app.get("/build", function(res, req) {
             //     db.workoutData.findAll({}).then(function(data) {
             //         res.render("build", { workoutData: data });
@@ -78,6 +81,19 @@ module.exports = function(app) {
         // });
 
     });
+    app.get("/:exercise", function(req, res) {
+        // console.log(req.params.workout_type);
+        db.workoutData.findOne({
+            where: {
+                workout_type: req.params.exercise
+            }
+        }).then(function(data) {
+            var hbsObject = { workoutData: data };
+            console.log('======== DATA=======', data);
+            res.render("build", hbsObject);
+        });
+    });
+
 
 
 
