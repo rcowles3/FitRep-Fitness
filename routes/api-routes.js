@@ -91,7 +91,7 @@ module.exports = function(app) {
         });
     });
     app.get("/:workout_type", function(req, res) {
-        // console.log(req.params.workout_type);
+        console.log(req.params.workout_type);
         db.exercises.findAll({
             where: {
                 workout_type: req.params.workout_type
@@ -104,11 +104,50 @@ module.exports = function(app) {
     })
 
     app.post("/:workout_type", function(req, res) {
-        // console.log(req.params.workout_type);
-        db.workoutData.create(req.body).then(function(data) {
-            // var hbsObject = { exercises: data };
-            console.log('======== WORKOUT DATA==========\n\n', hbsObject);
-            res.render("exercises", hbsObject);
+            // console.log(req.params.workout_type);
+            db.workoutData.create(req.body).then(function(data) {
+                // var hbsObject = { exercises: data };
+                console.log('======== WORKOUT DATA==========\n\n', hbsObject);
+                res.render("exercises", hbsObject);
+            })
         })
-    })
+        //console.log('======== DATA=======', data);
+        // res.render("build", hbsObject);
+        // });
+        // });
+        // app.post("/:exercise", function(req, res) {
+        //     // console.log(req.params.exercise);
+        //     var newWorkout = {
+        //             exercise: req.params.exercise
+
+    //         }
+    //console.log(newWorkout);
+    // db.workoutData.create(newWorkout).then(function(data) {
+    // console.log(data);
+    // res.end();
+    //res.render("workouts", { workoutData: data });
+
+    // app.get("/build", function(res, req) {
+    //     db.workoutData.findAll({}).then(function(data) {
+    //         res.render("build", { workoutData: data });
+    //     });
+    // });
+    // });
+    // db.workoutData.create(newWorkout).then(function(data) {
+    //     res.redirect("workouts");
+    // });
+
+    // });
+    // app.get("/:exercise", function(req, res) {
+    //     // console.log(req.params.workout_type);
+    //     db.workoutData.findOne({
+    //         where: {
+    //             workout_type: req.params.exercise
+    //         }
+    //     }).then(function(data) {
+    //         var hbsObject = { workoutData: data };
+    //         console.log('======== DATA=======', data);
+    //         res.render("build", hbsObject);
+    //     });
+    // });
 };

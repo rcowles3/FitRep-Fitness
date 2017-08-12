@@ -7,42 +7,58 @@
         <div class="col-md-4"></div>
         <div class="col-md-4">
             <h1>Exercises List</h1>
-            <li>
-                {{#each exercises}}
-                <form action="/{{this.workout_type}}?_method=GET" method="POST">
-                    <input type="hidden" name="excercises" value="true">
-                    <button type="submit">{{this.workout_type}}</button>
-                    {{this.exercise}}
-                </form>
-                {{/each}}
-            </li>
+            {{#each exercises}}
+            <form action="/{{this.workout_type}}?_method=GET" method="POST">
+                <input type="hidden" name="excercises" value="true">
+                <button type="submit">{{this.workout_type}}</button> {{this.exercise}}
+            </form>
+            {{/each}}
         </div>
         <div class="col-md-4">
+            {{#each exercises}}
+            <form action="/{{this.exercise}}" method="POST">
+                <input type="hidden" name="excercises" value="true">
+                <button type="submit" id="workouts" value={{this.exercise}}>{{this.exercise}}</button>
+            </form>
+            {{/each}}
         </div>
     </div>
 </div>
-{{!-- {{exercises}} --}}
-{{!-- <li>
+{{!-- {{exercises}} --}} {{!--
+<li>
     {{#each exercises}}
     <div>{{this.exercise}}</div>
-     <form class="create-update-form" action="/{{this.workout_type}}" method="POST">
-    <div class="form-group">
-        <label for="weight">Weight:</label>
-        <input type="text" id="weight" name="weight">
-        <label for="set">Set:</label>
-        <input type="text" id="set" name="set">
-        <label for="rep">Rep:</label>
-        <input type="text" id="rep" name="rep">
-    </div>
-    <button type="submit">Submit</button>
-</form> 
+    <form class="create-update-form" action="/{{this.workout_type}}" method="POST">
+        <div class="form-group">
+            <label for="weight">Weight:</label>
+            <input type="text" id="weight" name="weight">
+            <label for="set">Set:</label>
+            <input type="text" id="set" name="set">
+            <label for="rep">Rep:</label>
+            <input type="text" id="rep" name="rep">
+        </div>
+        <button type="submit">Submit</button>
+    </form>
     {{/each}}
-</li> --}}
-
- {{!-- <form class="create-update-form" action="/" method="POST">
+</li> --}} {{!--
+<form class="create-update-form" action="/" method="POST">
     <div class="form-group">
         <label for="newBurger">Name of Burger:</label>
         <input type="text" id="newBurger" name="name">
     </div>
     <button type="submit">Make Burger</button>
-</form>  --}}
+</form> --}}
+
+{{!-- <div class="customize">
+    <h1>Your Workout</h1>
+    <ol> --}}
+        {{!-- {{#each workoutData}} {{this.exercise}} {{/each}} --}}
+    {{!-- </ol>
+</div> --}}
+{{!-- <script>
+    $('button').click(function () {
+        var workout = $('button').val();
+        $('ol').append('<li>' + workout + '</li>');
+    });
+
+</script> --}}

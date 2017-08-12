@@ -1,17 +1,18 @@
 <li>
     {{#each exercises}}
     <div>{{this.exercise}}</div>
-     <form class="create-update-form" action="/exercises" method="POST">
-    <div class="form-group">
-        <label for="weight">Weight:</label>
-        <input type="text" id="weight" name="weight">
-        <label for="set">Set:</label>
-        <input type="text" id="set" name="set">
-        <label for="rep">Rep:</label>
-        <input type="text" id="rep" name="rep">
-    </div>
-    <button type="submit">Submit</button>
-</form> 
+    <form class="create-update-form" action="/exercises" method="POST">
+        <div class="form-group">
+            <label for="weight">Weight:</label>
+            <input type="text" id="weight" name="weight">
+            <label for="set">Set:</label>
+            <input type="text" id="set" name="set">
+            <label for="rep">Rep:</label>
+            <input type="text" id="rep" name="rep">
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+    {{#each workoutData}}
+    <div>{{this.id}}.{{this.exercise}}</div>
     {{/each}}
 </li>
-

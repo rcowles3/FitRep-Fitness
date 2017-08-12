@@ -43,10 +43,11 @@ var db = require("./models");
 // Routes
 // =============================================================
 require("./routes/api-routes.js")(app);
+//require("./routes/html-routes.js")(app);
 
 /// Syncing our sequelize models and then starting our Express app
 // =============================================================
-db.sequelize.sync({ force: true }).then(function() {
+db.sequelize.sync({ force: false }).then(function() {
     app.listen(PORT, function() {
         console.log("Listening on Port: ", PORT);
     });
