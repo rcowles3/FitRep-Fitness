@@ -1,96 +1,103 @@
-{{!-- <div class="row">
-   {{#each exercises}}
-        <div class="col-sm-6 col-md-2">
-            <div class="thumbnail">
-                <div class="list-group">
-                    <form  class="list-group-item active" action="/{{this.workout_type}}?_method=GET" method="POST">
+{{!--
+<div class="row">
+    {{#each exercises}}
+    <div class="col-sm-6 col-md-2">
+        <div class="thumbnail">
+            <div class="list-group">
+                <form class="list-group-item active" action="/{{this.workout_type}}?_method=GET" method="POST">
                     <input type="hidden" name="excercises" value="true">
                     <button type="submit">{{this.workout_type}}</button>
                 </form>
 
-                </div>
             </div>
         </div>
+    </div>
     {{/each}}
 </div>
 <div>
     {{#each exercises}}
-        <form action="/{{this.exercise}}" method="POST">
-            <input type="hidden" name="excercises" value="true">
-            <button id="workouts" type="submit">{{this.exercise}}</button>
-        </form>
+    <form action="/{{this.exercise}}" method="POST">
+        <input type="hidden" name="excercises" value="true">
+        <button id="workouts" type="submit">{{this.exercise}}</button>
+    </form>
     {{/each}}
 </div>
 <div class="row">
-   {{#each workoutType}}
-        <div class="col-sm-6 col-md-2">
-            <div class="thumbnail">
-                <div class="list-group">
-                    
-                  <a href="#" id="workoutType" class="list-group-item active">
+    {{#each workoutType}}
+    <div class="col-sm-6 col-md-2">
+        <div class="thumbnail">
+            <div class="list-group">
+
+                <a href="#" id="workoutType" class="list-group-item active">
                     {{this}} 
-                  </a>
-                  
-                  {{#each workout}}
-                  <button><a href="#" value = {{this}} id={{this}} class="list-group-item">{{this}}</a></button>
-                  {{/each}}
-                  
-                  
-                </div>
+                  </a> {{#each workout}}
+                <button><a href="#" value = {{this}} id={{this}} class="list-group-item">{{this}}</a></button> {{/each}}
+
+
             </div>
         </div>
-        {{/each}}
     </div>
-    <div class="customize">
-        <h1>Your Workout</h1>
-            <ol>
-            </ol>
-        </div>
+    {{/each}}
+</div>
+<div class="customize">
+    <h1>Your Workout</h1>
+    <ol>
+    </ol>
+</div>
 
 <script>
-
-$('button').click(function() {
-    var workout = $('button').val();
-    $(".customize").append('<p>'+workout+ '</p>');
+    $('button').click(function () {
+        var workout = $('button').val();
+        $(".customize").append('<p>' + workout + '</p>');
     });
 
 </script> --}}
 
 
 <div class="row">
-   {{#each exercises}}
-        <div class="col-sm-6 col-md-2">
-            <div class="thumbnail">
-                <div class="list-group">
-                    
-                 {{!-- <button action="/{{this.workout_type}}?_method=GET" method="POST">  --}}
+    <h1>Workout Types</h1>
+    {{#each exercises}}
+    <div class="col-sm-6 col-md-2">
+        <div class="thumbnail">
+            <div class="list-group">
+                {{!-- <button action="/{{this.workout_type}}?_method=GET" method="POST">  --}}
                  <a href="/{{this.workout_type}}" id="workoutType" class="list-group-item active" >
                     {{this.workout_type}} 
                   </a>
                   {{!-- </button> --}}
-                  
-                 
-                  
-                  
-                </div>
             </div>
         </div>
-        {{/each}}
-         {{#each exercises}}
-                  <button><a  href="/{{this.exercise}}" value = {{this.exercise}} id={{this.exercise}} class="list-group-item">{{this.exercise}}</a></button>
-                  {{/each}}
     </div>
-    <div class="customize">
-        <h1>Your Workout</h1>
-            <ol>
-            </ol>
-        </div>
+    {{/each}}
+
+</div>
+<div class="customize">
+    <h1>Your Workout</h1>
+    <ol>
+        {{#each exercises}}
+        <p value={{this.exercise}} id={{this.exercise}} class="list-group-item">{{this.exercise}}</p>
+        <form class="create-update-form" action="/exercises" method="POST">
+            <div class="form-group">
+                <label for="weight">Weight:</label>
+                <input type="text" id="weight" name="weight">
+            </div>
+            <div class="form-group">
+                <label for="set">Set:</label>
+                <input type="text" id="set" name="set">
+            </div>
+            <div class="form-group">
+                <label for="rep">Rep:</label>
+                <input type="text" id="rep" name="rep">
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+        {{/each}}
+    </ol>
+</div>
 
 <script>
-
-$('button').click(function() {
-    var workout = $('button').val();
-    $(".customize").append('<p>'+workout+ '</p>');
-    });
+    $('button').click(function () {
+        $('.customize').css("display", "contents");
+    })
 
 </script>

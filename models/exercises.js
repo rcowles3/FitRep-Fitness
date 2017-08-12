@@ -9,15 +9,5 @@ module.exports = function(sequelize, DataTypes) {
         timestamps: false
     });
 
-    // // Joining of our tables 
-    // // =======================================
-    // exercises.associate = function(models) {
-    //     // excercises can contain multiple sets of workoutData
-    //     exercises.hasMany(models.workoutData, {
-    //         foreignKey: {
-    //             allowNull: false
-    //         }
-    //     });
-    // };
     return exercises;
 };

@@ -1,17 +1,33 @@
 <div class="container">
-    <div class="row">
-        <div class="col-md-4"></div>
-		<div class="col-md-4">
-			<h1>User List</h1>
-             <li>
-                {{#each user}}
-                    <div>First Name: {{this.first_name}}</div>
-                    <div>Last Name:  {{this.last_name}}</div>
-                {{/each}}
-            </li> 
-		</div>
-		<div class="col-md-4">
-            
+    <div class="text-center">
+        <img src="/assets/img/fitRepLogo.png"></img>
+    </div>
+    <div>
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <form class="text-center" action="/login" method="GET">
+                <input type="hidden" name="login" value="true">
+                <button class="btn btn-primary" type="submit">Login</button>
+            </form>
+            <form class="text-center" action="/create-account" method="GET">
+                <input type="hidden" name="create-account" value="true">
+                <button class="btn btn-primary" type="submit">Create Account</button>
+            </form>
+            {{!-- <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                    <h1>User List</h1>
+                    <li>
+                        {{#each user}}
+                        <div>First Name: {{this.first_name}}</div>
+                        <div>Last Name: {{this.last_name}}</div>
+                        {{/each}}
+                    </li>
+                </div>
+                <div class="col-md-4">
+                </div>
+            </div> --}}
         </div>
+        <div class="col-md-3"></div>
     </div>
 </div>
