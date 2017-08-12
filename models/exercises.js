@@ -11,13 +11,13 @@ module.exports = function(sequelize, DataTypes) {
 
     // Joining of our tables 
     // =======================================
-    exercises.associate = function(models) {
-        // excercises can contain multiple sets of workoutData
-        exercises.hasMany(models.workoutData, {
-            foreignKey: {
-                allowNull: false
-            }
-        });
-    };
+    // exercises.associate = function(models) {
+    //     // excercises can contain multiple sets of workoutData
+    //     exercises.hasMany(models.workoutData, {
+    //         foreignKey: {
+    //             allowNull: false
+    //         }
+    //     });
+    // };
     return exercises;
 };

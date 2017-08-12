@@ -46,7 +46,7 @@ require("./routes/api-routes.js")(app);
 
 /// Syncing our sequelize models and then starting our Express app
 // =============================================================
-db.sequelize.sync({ force: false }).then(function() {
+db.sequelize.sync({ force: true }).then(function() {
     app.listen(PORT, function() {
         console.log("Listening on Port: ", PORT);
     });

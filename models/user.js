@@ -70,16 +70,16 @@ module.exports = function(sequelize, DataTypes) {
     // Joining of our tables 
     // =======================================
     // Associating users with workouts
-    user.associate = function(models) {
-        // When a user is deleted, also delete any associated workouts and excercises
-        user.hasMany(models.workoutData, {
-            onDelete: "cascade"
-        });
+    // user.associate = function(models) {
+    //     // When a user is deleted, also delete any associated workouts and excercises
+    //     user.hasMany(models.workoutData, {
+    //         onDelete: "cascade"
+    //     });
 
-        // user.hasMany(models.exercises, {
-        //     onDelete: "cascade"
-        // });
-    }
+    //     // user.hasMany(models.exercises, {
+    //     //     onDelete: "cascade"
+    //     // });
+    // }
 
     return user;
 }

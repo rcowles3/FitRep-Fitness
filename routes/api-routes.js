@@ -20,30 +20,64 @@ module.exports = function(app) {
         res.render("create-account");
     });
 
-    app.post("/create-account", function(req, res) {
-        console.log('======================= REQUEST ================\n\n', req.body);
-        db.user.create(req.body).then(function(data) {
-            res.redirect("/workouts");
-        })
-    })
+    app.post("/create-account", function(req, res, next) {
+
+        // res.redirect("/login");
+        // console.log('======================= REQUEST ================\n\n', req.body);
+        db.user.create(req.body).then(function(newUser) {
+            // console.log(newUser.first_name, newUser.last_name);
+            // res.render("workouts", newUser);
+
+            res.redirect("login");
+            // app.get("/:id", function(req, res) {
+            //     db.user.findOne({
+            //         where: {
+            //             id: req.params.id
+            //         }
+            //     }).then(function(data) {
+            //         console.log('=================== DATA =============', data);
+            //         // var hbsObject = { user: data };
+            //         // res.render("workouts", hbsObject);
+            //         // res.redirect("/login");
+
+            //     });
+            // });
+        });
+    });
 
     app.get("/login", function(req, res) {
         res.render("login");
     });
 
     app.post("/login", function(req, res) {
-        console.log('======================= REQUEST ================\n\n', req.body);
-        db.user.findOne({
+        // console.log('======================= REQUEST ================\n\n', req.body);
+        db.user.find({
             where: {
                 username: req.body.username,
                 pass: req.body.pass
             }
         }).then(function(loginData) {
-            res.redirect("/workouts");
             // console.log('================= LOGIN DATA ===============\n', loginData, '\n');
-            console.log('================= LOGIN DATA ===============\n', loginData.first_name, '\n');
-        })
-    })
+            if (!loginData) {
+                // alert("User does not Exist, please create an account.");
+                res.redirect('/create-account');
+            } else {
+                var hbsObject = { user: loginData };
+                console.log('===================DATA +================\n\n\n', hbsObject);
+                res.render("workouts", hbsObject);
+            }
+        });
+    });
+
+    // app.get("/login/:username", function(req, res) {
+    //     db.user.findOne({
+    //         where: {
+    //             username: req.params.username
+    //         }
+    //     }).then(function(loginData) {
+    //         res.render("workouts", { user: first_name });
+    //     });
+    // });
 
     app.get("/workouts", function(req, res) {
         db.exercises.findAll({

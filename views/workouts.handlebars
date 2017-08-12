@@ -1,5 +1,6 @@
 <div class="title">
-    <h1>Welcome {{users.first_name}} {{users.loginData}} {{loginData.first_name}}</h1>
+    {{hbsObject}}
+    <h1>Welcome {{hbsObject.user.first_name}}</h1>
 </div>
 <div class="container">
     <div class="row">
@@ -11,6 +12,7 @@
                 <form action="/{{this.workout_type}}?_method=GET" method="POST">
                     <input type="hidden" name="excercises" value="true">
                     <button type="submit">{{this.workout_type}}</button>
+                    {{this.exercise}}
                 </form>
                 {{/each}}
             </li>
@@ -19,6 +21,23 @@
         </div>
     </div>
 </div>
+{{!-- {{exercises}} --}}
+{{!-- <li>
+    {{#each exercises}}
+    <div>{{this.exercise}}</div>
+     <form class="create-update-form" action="/{{this.workout_type}}" method="POST">
+    <div class="form-group">
+        <label for="weight">Weight:</label>
+        <input type="text" id="weight" name="weight">
+        <label for="set">Set:</label>
+        <input type="text" id="set" name="set">
+        <label for="rep">Rep:</label>
+        <input type="text" id="rep" name="rep">
+    </div>
+    <button type="submit">Submit</button>
+</form> 
+    {{/each}}
+</li> --}}
 
  {{!-- <form class="create-update-form" action="/" method="POST">
     <div class="form-group">
