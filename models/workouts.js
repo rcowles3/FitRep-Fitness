@@ -16,15 +16,24 @@ module.exports = function(sequelize, DataTypes) {
     // Joining of our tables 
     // =======================================
     // We're saying that excercises and workoutData should belong to a user
-    // workoutData.associate = function(models) {
-    //     // workoutData can't be created without a user due to the foreign key constraint
-    //     workoutData.belongsTo(models.user, {
-    //         foreignKey: {
-    //             allowNull: false
-    //         }
-    //     });
-    //     // workoutData can contain multiple exercises
-    //     // workoutData.hasMany(models.exercises);
-    // };
+    workoutData.associate = function(models) {
+        // workoutData can't be created without a user due to the foreign key constraint
+        workoutData.belongsTo(models.user, {
+            foreignKey: {
+                as: "workout_data",
+                name: "user_id",
+                allowNull: false
+            }
+        });
+
+        // workoutData should have multiple Users as participants
+        workoutData.belongsToMany(models.user, {
+            through: models.exercises,
+            foreignKey: {
+                name: "workoutData_id",
+                allowNull: false
+            }
+        });
+    };
     return workoutData;
 };

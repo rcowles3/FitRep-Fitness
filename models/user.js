@@ -13,52 +13,55 @@ module.exports = function(sequelize, DataTypes) {
         // },
         first_name: {
             type: DataTypes.STRING,
-            // allowNull: false,
             validate: {
-                len: [1, 15]
+                len: [1]
             }
         },
         last_name: {
             type: DataTypes.STRING,
-            // allowNull: false,
             validate: {
-                len: [1, 15]
+                len: [1]
             }
         },
         heightFt: {
-            type: DataTypes.INTEGER
-                // allowNull: false
+            type: DataTypes.INTEGER,
+            validate: {
+                len: [1]
+            }
         },
         heightIn: {
-            type: DataTypes.INTEGER
-                // allowNull: false
+            type: DataTypes.INTEGER,
+            validate: {
+                len: [1]
+            }
         },
         weight: {
-            type: DataTypes.INTEGER
-                // allowNull: false
+            type: DataTypes.INTEGER,
+            validate: {
+                len: [1]
+            }
         },
         age: {
-            type: DataTypes.INTEGER
-                // allowNull: false
+            type: DataTypes.INTEGER,
+            validate: {
+                len: [1]
+            }
         },
         email: {
             type: DataTypes.STRING,
             isUnique: true,
-            // allowNull: false,
             validate: {
                 isEmail: true
             }
         },
         username: {
             type: DataTypes.STRING,
-            // allowNull: false,
             validate: {
                 len: [1, 15]
             }
         },
         pass: {
             type: DataTypes.STRING,
-            // allowNull: false,
             validate: {
                 len: [1, 15]
             }
@@ -70,16 +73,22 @@ module.exports = function(sequelize, DataTypes) {
     // Joining of our tables 
     // =======================================
     // Associating users with workouts
-    // user.associate = function(models) {
-    //     // When a user is deleted, also delete any associated workouts and excercises
-    //     user.hasMany(models.workoutData, {
-    //         onDelete: "cascade"
-    //     });
+    user.associate = function(models) {
+        // When a user is deleted, also delete any associated workouts and excercises
+        user.hasMany(models.workoutData, {
+            as: "workout_data",
+            foreignKey: "workout_id",
+            onDelete: "cascade"
+        });
 
-    //     // user.hasMany(models.exercises, {
-    //     //     onDelete: "cascade"
-    //     // });
-    // }
+        user.belongsToMany(models.workoutData, {
+            through: models.exercises,
+            foreignKey: {
+                name: "user_id",
+                allowNull: false
+            }
+        });
+    };
 
     return user;
-}
+};

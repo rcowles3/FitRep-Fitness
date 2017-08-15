@@ -22,26 +22,8 @@ module.exports = function(app) {
 
     app.post("/create-account", function(req, res) {
 
-        // res.redirect("/login");
-        // console.log('======================= REQUEST ================\n\n', req.body);
         db.user.create(req.body).then(function(newUser) {
-            // console.log(newUser.first_name, newUser.last_name);
-            // res.render("workouts", newUser);
-
             res.redirect("login");
-            // app.get("/:id", function(req, res) {
-            //     db.user.findOne({
-            //         where: {
-            //             id: req.params.id
-            //         }
-            //     }).then(function(data) {
-            //         console.log('=================== DATA =============', data);
-            //         // var hbsObject = { user: data };
-            //         // res.render("workouts", hbsObject);
-            //         // res.redirect("/login");
-
-            //     });
-            // });
         });
     });
 
@@ -63,7 +45,7 @@ module.exports = function(app) {
                 res.redirect('/create-account');
             } else {
                 var hbsObject = { user: loginData };
-                // console.log('===================DATA +================\n\n\n', hbsObject);
+                console.log('===================DATA +================\n\n\n', hbsObject);
                 res.redirect("workouts");
             }
         });
